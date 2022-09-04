@@ -19,8 +19,4 @@ while True:
     message = "{:.2f}|{:.2f}".format(left_speed, right_speed)
     rfm9x.send(bytes(message, "utf-8"))
     
-    while True:
-        packet = rfm9x.receive()
-        
-        if (packet is not None):
-            break 
+    packet = rfm9x.receive()
