@@ -76,6 +76,8 @@ class Joystick():
         x = self.adc._get_result(1)
         y = self.adc._get_result(0)
         
+        print("raw:", x, y)
+        
         x = (((255-x) - 128) / 128)
         y = ((255-y) - 128) / 128
         
@@ -87,6 +89,8 @@ class Joystick():
         else:
             deg = 90
             
+        print("deg:", deg)
+        
         if deg >= 45:
             primary_motor_speed = y
         elif (x>=0 and y>=0) or (x<0 and y<0):
@@ -103,6 +107,8 @@ class Joystick():
         else:
             right_wheel_speed = primary_motor_speed
             left_wheel_speed = secondary_motor_speed
+            
+        print(left_wheel_speed, right_wheel_speed)
             
         return left_wheel_speed, right_wheel_speed
     
